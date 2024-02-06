@@ -1,0 +1,33 @@
+<div class= container>
+<h1>Todas as Pessoas:</h1>
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Documento</th>
+        <th scope="col">Cidade</th>
+        <th scope="col">Pode Comprar</th>
+        <th scope="col">Observações</th>
+        <th scope="col">Código Alt.</th>
+        <th scope="col">Ativo</th>
+      </tr>
+    </thead>
+    <tbody>
+    @for (person of persons$ | async; track $index)
+    {
+      <tr>
+        <th scope="row">1</th>
+        <td>{{person.name}}</td>
+        <td>{{person.document}}</td>
+        <td>{{person.town}}</td>
+        <td>{{person.canBuy}}</td>
+        <td>{{person.observations}}</td>
+        <td>{{person.alternativeIdentifier}}</td>
+        <td>{{person.enable}}</td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>
