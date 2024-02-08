@@ -10,8 +10,13 @@ export class PersonService
     private http = inject(HttpClient);
     private urlApi = `http://localhost:5132/person`
 
-    getPersons()
+    getAllPersons()
     {
         return this.http.get<Person[]>(this.urlApi);
+    }
+
+    updatePerson(shortid: string, person: Person)
+    {
+        return this.http.put(`${this.urlApi}/${shortid}`, person)
     }
 }
