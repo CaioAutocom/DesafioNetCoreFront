@@ -3,6 +3,7 @@ import { PersonService } from '../../person.service';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
+  selector: 'app-person-get-all',
   standalone: true,
   imports: [AsyncPipe],
   templateUrl: './person-get-all.component.html',
@@ -11,7 +12,7 @@ import { AsyncPipe } from '@angular/common';
 
 export class PersonGetAllComponent {
   private personService = inject(PersonService);
-  protected persons$ = this.personService.getPersons();
+  protected persons$ = this.personService.getAllPersons();
 
   constructor(){
     this.persons$.subscribe(persons=>console.log(persons));

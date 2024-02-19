@@ -1,5 +1,7 @@
-:host {
-  display: block;
+.sidebar {
+  display: inline-block;
+  width: 280px;
+  height: 100vh;
 }
 
 body {
@@ -64,4 +66,8 @@ main {
 
 .scrollarea {
   overflow-y: auto;
+}
+
+.position{
+  position: absolute;
 }
