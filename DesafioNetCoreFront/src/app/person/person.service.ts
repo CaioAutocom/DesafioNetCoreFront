@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable, inject } from "@angular/core";
-import { Person } from "./person.model";
+import { Person } from "../interfaces/person.model";
 
 @Injectable({
     providedIn: 'root'
@@ -14,7 +14,10 @@ export class PersonService
     {
         return this.http.get<Person[]>(this.urlApi);
     }
-
+    getPersonByShortId(shortid: string)
+    {
+        return this.http.get<Person[]>(`${this.urlApi}/${shortid}`);
+    }
     updatePerson(shortid: string, person: Person)
     {
         return this.http.put(`${this.urlApi}/${shortid}`, person)

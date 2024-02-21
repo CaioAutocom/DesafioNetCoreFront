@@ -1,6 +1,8 @@
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../../../../services/auth.service';
 import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { Credentials } from '../../../../interfaces/credentials.model';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -8,31 +10,38 @@ import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
   templateUrl: './login-page.component.html',
   styleUrl: './login-page.component.scss'
 })
+
 export class LoginPageComponent {
-  // username: string = '';
-  // password: string = '';
 
   constructor(private authService: AuthService){}
 
   protected formBuilderService = inject(FormBuilder);
+  protected router = inject(Router);
+
   protected form = this.formBuilderService.group({
-    username: '',
+    username: [''],
     password: ['']
   })
   onSubmit()
   {
-    const username = this.form.value.username;
-    const password = this.form.value.password;
-
-    this.authService.login(username, password).subscribe(
+    const credentials: Credentials = 
+    {
+      Email: this.form.value.username || 'ff',
+      Password: this.form.value.password || 'ff'
+    };
+    
+    this.authService.login(credentials).subscribe(
       response => 
       {
-        this.authService.setToken(response.token);
+        this.authService.setToken(response.accessToken);
         this.authService.setRefreshToken(response.refreshToken);
-        console.log(response.token);
+        console.log(response.accessToken);
+        
+        
+        this.router.navigate(['/person']); 
       },
-      error => { 
-        // tratar'
+      (error) => {
+        console.error('Erro de login', error);
       }
     )
   }
