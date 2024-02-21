@@ -7,6 +7,7 @@ import { Component } from '@angular/core';
   templateUrl: './update-person-by-short-id.component.html',
   styleUrl: './update-person-by-short-id.component.scss'
 })
-export class UpdatePersonByShortIdComponent {
+export class UpdatePersonByShortIdComponent
+{
 
 }

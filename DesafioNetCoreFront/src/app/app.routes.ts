@@ -4,6 +4,7 @@ import { RegisterPageComponent } from './users/pages/register-page/register-page
 import { PersonGetAllComponent } from './person/pages/person-get-all/person-get-all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
 import { PersonGetByShortIdComponent } from './person/pages/person-get-by-short-id/person-get-by-short-id.component';
+import { UpdatePersonByShortIdComponent } from './person/pages/updatePerson/update-person-by-short-id/update-person-by-short-id.component';
 
 export const routes: Routes = [
     {
@@ -26,7 +27,16 @@ export const routes: Routes = [
         component: PersonGetAllComponent
     },
     {
-        path:'aa',
+        path:'personbyshortid',
         component: PersonGetByShortIdComponent
-    }
+    },
+    {
+        path:'sidebar',
+        component: SidebarComponent
+    },
+    {
+        path:'updateperson',
+        component: UpdatePersonByShortIdComponent
+    },
+    
 ];

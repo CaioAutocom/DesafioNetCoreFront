@@ -16,7 +16,7 @@ export class PersonService
     }
     getPersonByShortId(shortid: string)
     {
-        return this.http.get<Person[]>(`${this.urlApi}/${shortid}`);
+        return this.http.get<Person>(`${this.urlApi}/${shortid}`);
     }
     updatePerson(shortid: string, person: Person)
     {

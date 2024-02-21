@@ -13,8 +13,4 @@ import { AsyncPipe } from '@angular/common';
 export class PersonGetAllComponent {
   private personService = inject(PersonService);
   protected persons$ = this.personService.getAllPersons();
-
-  constructor(){
-    this.persons$.subscribe(persons=>console.log(persons));
-  }
 }
