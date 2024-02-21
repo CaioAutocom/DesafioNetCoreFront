@@ -19,15 +19,16 @@ export class LoginPageComponent {
   protected router = inject(Router);
 
   protected form = this.formBuilderService.group({
-    username: [''],
-    password: ['']
+    username: ['admin@admin.com'],
+    password: ['administrator']
   })
+  
   onSubmit()
   {
     const credentials: Credentials = 
     {
-      Email: this.form.value.username || 'ff',
-      Password: this.form.value.password || 'ff'
+      Email: this.form.value.username || '',
+      Password: this.form.value.password || ''
     };
     
     this.authService.login(credentials).subscribe(
@@ -36,8 +37,7 @@ export class LoginPageComponent {
         this.authService.setToken(response.accessToken);
         this.authService.setRefreshToken(response.refreshToken);
         console.log(response.accessToken);
-        
-        
+
         this.router.navigate(['/person']); 
       },
       (error) => {
